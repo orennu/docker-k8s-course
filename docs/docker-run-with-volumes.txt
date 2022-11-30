@@ -1,0 +1,10 @@
+docker run 
+-d => dettached mode
+-p 3000:80 => map local port 3000 to container port 80
+--name feedback-app => name the container
+-v feedback:/app/feedback => named volume
+-v /home/oren/projects/deployments/docker-kubernetes-course/data-volumes-01-starting-setup:/app:ro => bind mount with readonly permissions on the local folder
+-v /app/node_modules => annonymous volume, this will override the bind mount enforcement for node_modules folder
+-v /app/temp => => annonymous volume, this will override the bind mount enforcement for temp folder
+--rm => remove container on stop
+feedback-node:volumes => image for creating the container
