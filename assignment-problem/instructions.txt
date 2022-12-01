@@ -24,7 +24,7 @@ Solutions:
 3) node: `docker run -d -p 3002:3000 --name nodeapp <IMAGEID>`
    python: `docker run -it --name pythonapp <IMAGEID>`
 4) remove containers: `docker rm <CONTAINERID> <CONTAINERID> nodeapp pythonapp`
-   remove images: `docker rmi <IMAGEID> <IMAGEID>`
+   remove images: `docker rmi <IMAGEID> <IMAGEID>` or `docker image prune`
 5) node: `docker build -t nodeapp:0.0.1 .`
    python: `docker build -t pythonapp:0.0.1 .`
 6) node: `docker run -d -p 3002:3000 --name nodeapp --rm nodeapp:0.0.1`
