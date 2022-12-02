@@ -29,3 +29,9 @@ docker run -d --rm --name goals-app-be --network goals-net -p 80:80 -v /app/node
 
 #### run the frontend app ####
 docker run -d --rm --name goals-app-fe -p 3000:3000 -v /home/oren/projects/deployments/docker-kubernetes-course/multi-starting-setup/frontend/src:/app/src:ro goals-frontend
+
+-d: dettached mode
+--rm: remove container when stopped
+--name goals-app-fe: name for the container
+-p 3000:3000: publish port for container
+-v /home/oren/projects/deployments/docker-kubernetes-course/multi-starting-setup/frontend/src:/app/src:ro: bind mount for dev, this helps making changes to code without the need to re-build image over and over (in conjuction with nodemon)
