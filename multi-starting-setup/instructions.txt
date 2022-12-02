@@ -1,0 +1,31 @@
+#### run the db ####
+docker run -d --rm --name mongodb --network goals-net -v data:/data/db -e MONGO_INITDB_ROOT_USERNAME=orenn -e MONGO_INITDB_ROOT_PASSWORD=secret mongo
+
+-d: dettached mode
+--rm: remove container when stopped
+--name mongodb: name for the container
+--network goals-net: set network for container
+-v data:/data/db: named volume to persist db files
+-e MONGO_INITDB_ROOT_USERNAME=orenn: set environment variable for db user
+-e MONGO_INITDB_ROOT_PASSWORD=secret: set environment variable for db pass
+
+#### run the backend app ####
+docker run -d --rm --name goals-app-be --network goals-net -p 80:80 -v /app/node_modules -v logs:/app/logs -v /home/oren/projects/deployments/docker-kubernetes-course/multi-starting-setup/backend:/app:ro -e DB_USER=orenn goals-backend
+
+OR with --env-file
+
+docker run -d --rm --name goals-app-be --network goals-net -p 80:80 -v /app/node_modules -v logs:/app/logs -v /home/oren/projects/deployments/docker-kubernetes-course/multi-starting-setup/backend:/app:ro --env-file ./.env goals-backend
+
+-d: dettached mode
+--rm: remove container when stopped
+--name goals-app-be: name for the container
+--network goals-net: set network for container
+-p 80:80: publish port for container
+-v /app/node_modules: annonymous volume, this will override the bind mount enforcement for node_modules folder
+-v logs:/app/logs: named volume for logs
+-v /home/oren/projects/deployments/docker-kubernetes-course/multi-starting-setup/backend:/app:ro: bind mount for dev, this helps making changes to code without the need to re-build image over and over (in conjuction with nodemon)
+-e DB_USER=orenn: set environment variable
+--env-file ./.env: set env file for container
+
+#### run the frontend app ####
+docker run -d --rm --name goals-app-fe -p 3000:3000 -v /home/oren/projects/deployments/docker-kubernetes-course/multi-starting-setup/frontend/src:/app/src:ro goals-frontend
