@@ -2,7 +2,7 @@
 
 1. create src folder in project root directory
 2. run 'docker-compose run --rm composer create-project --prefer-dist laravel/laravel:^8.0 .'
-3. open src/.env and update the following
+3. open src/.env and update the following  
    """
    DB_HOST=mysql  
    DB_DATABASE=homestead  
