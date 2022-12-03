@@ -1,0 +1,53 @@
+services:
+  mongodb:
+    image: "mongo"
+    container_name: mongodb
+    volumes:
+      - data:/data/db
+    # environment:
+    # - MONGO_INITDB_ROOT_USERNAME=orenn
+    #   MONGO_INITDB_ROOT_USERNAME: orenn
+    # - MONGO_INITDB_ROOT_PASSWORD=secret
+    #   MONGO_INITDB_ROOT_PASSWORD: secret
+    env_file:
+      - ./env/mongodb.env
+
+  backend:
+    build: ./backend
+    container_name: goals-backend-app
+    # build:
+    #   context: ./backend
+    #   dockerfile: Dockerfile
+    #   args:
+    #     arg1: 1
+    #     arg2: 'foo'
+    ports:
+      - "80:80"
+    volumes:
+      - logs:/app/logs
+      - ./backend:/app
+      - /app/node_modules
+    env_file:
+      - ./env/backend.env
+    depends_on:
+      - mongodb
+
+  frontend:
+    build: ./frontend
+    container_name: goals-frontend-app
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend/src:/app/src
+    depends_on:
+      - backend
+    # same as docker run -it
+    # stdin_open: true
+    # tty: true
+
+volumes:
+  data:
+  logs:
+# deploy:
+#     mode: replicated
+#     replicas: 2
