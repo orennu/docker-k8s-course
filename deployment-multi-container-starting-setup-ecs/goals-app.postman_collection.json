@@ -1,0 +1,77 @@
+{
+	"info": {
+		"_postman_id": "ccc1fd26-a3f1-4b1e-923d-57b644128f5b",
+		"name": "goals-app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getGoals",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/goals/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"goals",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createGoal",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"text\": \"deploy app on ECR\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/goals",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"goals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteGoal",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/goals/:id",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"goals",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "638def78e2b2d154a46d5048"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
