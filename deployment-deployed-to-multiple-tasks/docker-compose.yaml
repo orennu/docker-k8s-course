@@ -1,9 +1,8 @@
-version: '3.8'
 services:
   backend:
     build: ./backend
     ports:
-      - '80:80'
+      - "80:80"
     volumes:
       - ./backend:/app
       - /app/node_modules
@@ -12,7 +11,7 @@ services:
   frontend:
     build: ./frontend
     ports:
-      - '3000:3000'
+      - "3000:3000"
     volumes:
       - ./frontend/src:/app/src
     stdin_open: true
