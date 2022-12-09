@@ -1,4 +1,25 @@
-# commands
+# Commands
+
+## Table of Contents
+
+- [start minikube cluster](#start-the-minikube-cluster)
+- [get minikube cluster status](#get-minikube-cluster-status)
+- [launch minikube dashboard](#launch-kubernetes-dashboard-within-minikube-cluster)
+- [create a deployment](#create-a-deployment)
+- [get deployments](#get-deployments)
+- [get pods](#get-pods)
+- [delete a deployment](#delete-a-deployment)
+- [expose deployment through a service](#expose-deployment-through-service)
+- [get services](#get-services)
+- [minikube return service url](#return-url-to-connect-to-a-service-in-minikube-cluster)
+- [scale a deployment](#scale-a-deployment)
+- [update deployment image](#update-deployment-image)
+- [get deployment rollout status](#get-deployment-rollout-status)
+- [rollback deployment to previous revision](#rollback-a-deployment-to-previous-one)
+- [get deployment rollout history](#get-deployment-rollout-history)
+- [get deployment rollout revision details](#get-deployment-rollout-revision-details)
+- [rollback deployment to specific revision](#rollback-a-deployment-to-specific-revision)
+- [delete a service](#delete-a-service)
 
 ## Start the minikube cluster
 
