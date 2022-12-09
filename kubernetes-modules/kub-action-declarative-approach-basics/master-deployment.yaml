@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+  selector:
+    app: node-second-app-pod
+  ports:
+    - protocol: "TCP"
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-second-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-second-app-pod
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: node-second-app-pod
+        tier: backend
+    spec:
+      containers:
+        - name: node-second-app
+          image: orennu/kub-declarative-app:0.0.3
+          resources:
+            limits:
+              memory: 256Mi
+              cpu: "0.5"
