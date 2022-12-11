@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  labels:
+    group: data-demo
+spec:
+  selector:
+    app: story-app
+  ports:
+    - protocol: "TCP"
+      port: 80
+      targetPort: 3000
+  type: LoadBalancer

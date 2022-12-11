@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: story-deployment
+  labels:
+    group: data-demo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: story-app
+  template:
+    metadata:
+      labels:
+        app: story-app
+    spec:
+      containers:
+        - name: story-container
+          image: orennu/kub-data-demo:latest
+          env:
+            - name: STORY_FOLDER
+              # value: "story"
+              valueFrom:
+                configMapKeyRef:
+                  name: data-store-env
+                  key: folder
+          volumeMounts:
+            - mountPath: /app/story
+              name: story-volume
+          resources:
+            limits:
+              memory: 256Mi
+              cpu: "0.25"
+      volumes:
+        - name: story-volume
+          # emptyDir: {} # volume bound to specific pod
+          # hostPath: # volume bound to specific node
+          #   path: /data
+          #   type: DirectoryOrCreate
+          persistentVolumeClaim:
+            claimName: host-pvc

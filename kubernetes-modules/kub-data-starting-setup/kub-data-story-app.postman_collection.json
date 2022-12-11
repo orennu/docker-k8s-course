@@ -1,0 +1,62 @@
+{
+	"info": {
+		"_postman_id": "5001f8d5-9e43-47b6-af49-034b63fbdac1",
+		"name": "kub-data-story-app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getStory",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.49.2:32040/story",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"49",
+						"2"
+					],
+					"port": "32040",
+					"path": [
+						"story"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addStory",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"text\": \"in a galaxy far far away...\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.49.2:32040/story",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"49",
+						"2"
+					],
+					"port": "32040",
+					"path": [
+						"story"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
