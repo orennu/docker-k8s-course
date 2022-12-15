@@ -1,0 +1,98 @@
+{
+	"info": {
+		"_postman_id": "e6ce9620-16ac-4939-91e7-f2ae2e217624",
+		"name": "kub-deploy-eks",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"emily@example.com\",\n    \"password\": \"pass12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://ad396548584034c5e8bf4df96dea2eb1-739267450.eu-west-1.elb.amazonaws.com/signup",
+							"protocol": "http",
+							"host": [
+								"ad396548584034c5e8bf4df96dea2eb1-739267450",
+								"eu-west-1",
+								"elb",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"oren@example.com\",\n    \"password\": \"pass12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://ad396548584034c5e8bf4df96dea2eb1-739267450.eu-west-1.elb.amazonaws.com/login",
+							"protocol": "http",
+							"host": [
+								"ad396548584034c5e8bf4df96dea2eb1-739267450",
+								"eu-west-1",
+								"elb",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getLogs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://ad396548584034c5e8bf4df96dea2eb1-739267450.eu-west-1.elb.amazonaws.com/logs",
+							"protocol": "http",
+							"host": [
+								"ad396548584034c5e8bf4df96dea2eb1-739267450",
+								"eu-west-1",
+								"elb",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"logs"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
